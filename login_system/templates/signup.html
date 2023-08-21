@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'login_system/style.css' %}">
+  <title>Signup To App</title>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Signup</h2>
+    <form action="http://127.0.0.1:8000/signup" method="post" id="signup-form">
+      {% csrf_token %}
+      
+      {{signup_form}}
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <p id="message" style="color: red; font-weight: bold;">
+      {{wrong_password_message}}{{error_message}}
+    </p>
+  </div>
+  
+  <script src="{% static 'login_system/script.js' %}"></script>
+</body>
+</html>

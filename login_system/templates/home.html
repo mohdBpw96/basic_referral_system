@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .header {
+            padding: 10px 40px;
+            text-align: center;
+            background: #00ffcc;
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+        }
+
+        .referral_block {
+            font-size: xx-large;
+            font-family: cursive;
+            text-align: center;
+            margin: 15vh 10vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="login_success_msg" class="header">
+        Logged in successfully!
+    </div>
+
+    <div id="referral" class="referral_block">
+        You can refer anyone by given them this referral code - "<strong style="text-decoration: underline;">{{referral_code}}</strong>"
+    </div>
+    <div class="referral_block">
+        Your Total Referrals - <strong>{{total_referrals}}</strong>
+    </div>
+
+    <form action="http://127.0.0.1:8000/home" method="post">
+        {% csrf_token %}
+        <div style="text-align: center;">
+            <button type="submit" name="log_out" style="padding: 20px 30px; background-color: rgb(158, 237, 158); color: rgb(0, 72, 0); font-size: medium; font-weight: bold;">
+                Log out
+            </button>
+        </div>
+    </form>
+
+</body>
+<script>
+    setTimeout(remove_msg, 5000);
+
+    function remove_msg() {
+        document.getElementById('login_success_msg').style.display = 'none';
+    }
+
+</script>
+</html>
